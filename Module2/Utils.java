@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+
 public final class Utils {
 
     public static List<Book> getBooks() {
@@ -42,14 +43,14 @@ public final class Utils {
         Random random = new Random(30);
 
         // Бац — и 10 случайных чисел от 1 до 100 в массиве
-        //int[] numbers = random.ints(n * 5, 0, books.size() - 1).toArray();
+        // int[] numbers = random.ints(n * 5, 0, books.size() - 1).toArray();
 
         HashSet<Book> personBooks = new HashSet<Book>();
         for (Student student : students) {
 
             while (personBooks.size() < 5 + random.nextInt(3)) {
                 personBooks.add(books.get(random.nextInt(books.size())));
-                //System.err.println(personBooks);
+                // System.err.println(personBooks);
             }
 
             student.books.addAll(personBooks);
@@ -64,4 +65,6 @@ public final class Utils {
 
         return students;
     }
+
+        
 }

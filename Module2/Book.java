@@ -1,10 +1,8 @@
 package Module2;
 
-import java.io.Serializable;
 
-public class Book implements Serializable {
+public class Book {
 
-    private static final long serialVersionUID = 1L;
     private final int id;
     private final String name;
     private final int year;
@@ -42,5 +40,21 @@ public class Book implements Serializable {
     public String toTSVString() {
         return String.format("%d\t%s\t%d\t%d",
                 id, name, year, pagesCount);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return id == book.id
+            && name.equals(book.name)
+            && year == book.year
+            && pagesCount == book.pagesCount;
+    }
+
+    @Override
+    public int hashCode() {
+        return java.util.Objects.hash(id, name, year, pagesCount);
     }
 }
