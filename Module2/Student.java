@@ -44,6 +44,22 @@ public class Student implements Serializable {
                 id, name, surname, strB.toString());
     }
 
+    public String toTSVString() {
+        StringBuffer strB = new StringBuffer();
+
+        for (Book book : books) {
+            strB.append(book.toTSVString());
+            strB.append("\t");
+        }
+
+        if (strB.length() > 0) {
+            strB.setLength(strB.length() - 1);
+        }
+
+        return String.format("%d\t%s\t%s\t%d\t%s",
+                id, name, surname, books.size(), strB.toString());
+    }
+
     public int getId() {
         return id;
     }

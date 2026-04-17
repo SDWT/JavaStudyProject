@@ -41,7 +41,7 @@ public class Main {
         List<Student> students = Utils.generateStudents();
 
         for (Student student : students) {
-            System.err.println(student);
+            System.err.println(student.toTSVString());
         }
 
         // try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new

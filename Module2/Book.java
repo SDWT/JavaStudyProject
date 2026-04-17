@@ -35,8 +35,12 @@ public class Book implements Serializable {
     
     @Override
     public String toString() {
-
         return String.format("%d: %s (%d) %d pages",
+                id, name, year, pagesCount);
+    }
+
+    public String toTSVString() {
+        return String.format("%d\t%s\t%d\t%d",
                 id, name, year, pagesCount);
     }
 }
