@@ -1,6 +1,5 @@
 package Module2;
 
-
 public class Book {
 
     private final int id;
@@ -30,7 +29,7 @@ public class Book {
     public String getName() {
         return name;
     }
-    
+
     @Override
     public String toString() {
         return String.format("%d: %s (%d) %d pages",
@@ -44,13 +43,17 @@ public class Book {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+
+        if (o == null || getClass() != o.getClass())
+            return false;
+        
         Book book = (Book) o;
         return id == book.id
-            && name.equals(book.name)
-            && year == book.year
-            && pagesCount == book.pagesCount;
+                && name.equals(book.name)
+                && year == book.year
+                && pagesCount == book.pagesCount;
     }
 
     @Override
