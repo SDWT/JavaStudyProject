@@ -1,0 +1,5 @@
+1	Ivan	Ivanov	5	9	Ender's Game	1985	324	4	Starship Troopers	1959	352	8	The Hitchhiker’s Guide to the Galaxy	1979	224	5	Dune	1965	640	3	The Da Vinci Code	2003	544
+2	Petr	Petrov	6	4	Starship Troopers	1959	352	5	Dune	1965	640	3	The Da Vinci Code	2003	544	7	Hyperion	1989	482	10	Snow Crash	1992	480	15	Altered Carbon	2002	375
+3	Sidr	Sidorov	6	9	Ender's Game	1985	324	14	The Three-Body Problem	2006	302	5	Dune	1965	640	3	The Da Vinci Code	2003	544	2	Martianin	2011	480	10	Snow Crash	1992	480
+4	Kot	Kotov	6	11	Do Androids Dream of Electric Sheep?	1968	210	8	The Hitchhiker’s Guide to the Galaxy	1979	224	12	Ready Player One	2011	374	5	Dune	1965	640	6	Foundation	1951	255	3	The Da Vinci Code	2003	544
+5	Vin	Diesel	7	11	Do Androids Dream of Electric Sheep?	1968	210	4	Starship Troopers	1959	352	8	The Hitchhiker’s Guide to the Galaxy	1979	224	12	Ready Player One	2011	374	5	Dune	1965	640	7	Hyperion	1989	482	10	Snow Crash	1992	480

@@ -1,9 +1,15 @@
 package Module2;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Stream;
 
 public final class Utils {
 
@@ -60,11 +66,38 @@ public final class Utils {
         return students;
     }
 
-    public static List<Student> readStudents(String filename) {
+    public static void writeStudentsToFile(String filename, List<Student> students) {
+        var path = Path.of(filename);
+
+        try {
+            Files.writeString(path, "");
+
+            for (Student student : students) {
+                Files.writeString(path, student.toTSVString(), StandardOpenOption.APPEND);
+                Files.writeString(path, "\n", StandardOpenOption.APPEND);
+            }
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+    }
+
+    public static List<Student> readStudentsFromFile(String filename) {
         List<Student> students = new ArrayList<>(10);
+        var path = Path.of(filename);
+
+        if (!Files.exists(path))
+            return null;
+
+        try (Stream<String> stream = Files.lines(Paths.get("file.txt"))) {
+
+        } catch (IOException e) {
+            System.err.println("Can't open Students file.");
+            e.printStackTrace();
+        }
 
         return students;
     }
 
-        
 }

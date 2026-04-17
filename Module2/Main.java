@@ -1,6 +1,5 @@
 package Module2;
 
-import java.io.IOException;
 import java.util.List;
 
 /*
@@ -39,30 +38,32 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
+        String filename = "students.txt";
         List<Student> students = Utils.generateStudents();
+        Utils.writeStudentsToFile(filename, students);
+        // List<Student> students = Utils.readStudentsFromFile(filename);
 
-        for (Student student : students) {
-            System.out.println(student.toTSVString());
-        }
+        // for (Student student : students) {
+        // System.out.println(student.toTSVString());
+        // }
 
-        String[] strs = new String[10];
-        for (int i = 0; i < students.size(); i++) {
-            strs[i] = students.get(i).toTSVString();
-        }
+        // String[] strs = new String[10];
+        // for (int i = 0; i < students.size(); i++) {
+        // strs[i] = students.get(i).toTSVString();
+        // }
 
+        // for (int i = 0; i < students.size(); i++) {
+        // try {
 
-        for (int i = 0; i < students.size(); i++) {
-            try {
-                
-                System.out.println(students.get(i)
-                .studentEquals(Student.fromTSVString(strs[i])));
+        // System.out.println(students.get(i)
+        // .studentEquals(Student.fromTSVString(strs[i])));
 
-            } catch (IOException e) {
-                System.err.println("Неудалось распарсить студента. " + e.getMessage());
-                e.printStackTrace();
-                return;
-            }
-        }
+        // } catch (IOException e) {
+        // System.err.println("Неудалось распарсить студента. " + e.getMessage());
+        // e.printStackTrace();
+        // return;
+        // }
+        // }
 
         // try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new
         // FileOutputStream("students.txt"))) {
