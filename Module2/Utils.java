@@ -90,7 +90,7 @@ public final class Utils {
         if (!Files.exists(path))
             return null;
 
-        try (Stream<String> stream = Files.lines(Paths.get("file.txt"))) {
+        try (Stream<String> stream = Files.lines(Paths.get(filename))) {
 
         } catch (IOException e) {
             System.err.println("Can't open Students file.");
