@@ -1,5 +1,6 @@
 package Module2;
 
+import java.io.EOFException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -82,7 +83,7 @@ public class Student {
         return books;
     }
 
-    public static Student fromTSVString(String tsvStudent) {
+    public static Student fromTSVString(String tsvStudent) throws EOFException {
         var studentStrs = tsvStudent.split("\t");
         // id name surname countBooks bookId bookName bookYear bookPages
 
@@ -92,8 +93,7 @@ public class Student {
         int id = Integer.parseInt(studentStrs[0]);
         int bookCnt = Integer.parseInt(studentStrs[3]);
         if (studentStrs.length - shift != bookCnt * bookSize) {
-            //throw new IOException("Count of student books dont equal count of parameters.");
-            bookCnt = (studentStrs.length - shift) / bookSize;
+            throw new EOFException("Count of student books dont equal count of parameters.");
         }
 
         ArrayList<Book> books = new ArrayList<Book>(bookCnt);

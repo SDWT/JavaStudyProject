@@ -1,5 +1,6 @@
 package Module2;
 
+import java.io.EOFException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -91,6 +92,15 @@ public final class Utils {
             return null;
 
         try (Stream<String> stream = Files.lines(Paths.get(filename))) {
+
+            stream.forEach(str -> {
+                try {
+                    students.add(Student.fromTSVString(str));
+                } catch (EOFException e) {
+                    System.err.println(String.format("String was pass. Exception message: %s\nString: %s", e.getMessage(), str));
+                    e.printStackTrace();
+                }
+            });
 
         } catch (IOException e) {
             System.err.println("Can't open Students file.");
