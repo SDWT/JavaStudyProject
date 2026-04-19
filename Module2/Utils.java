@@ -67,7 +67,7 @@ public final class Utils {
         return students;
     }
 
-    public static void writeStudentsToFile(String filename, List<Student> students) {
+    public static boolean writeStudentsToFile(String filename, List<Student> students) {
         var path = Path.of(filename);
 
         try {
@@ -78,10 +78,12 @@ public final class Utils {
                 Files.writeString(path, "\n", StandardOpenOption.APPEND);
             }
         } catch (IOException e) {
-            // TODO Auto-generated catch block
+            System.err.println("IOException: Can't work with students.tsv file.");
             e.printStackTrace();
+            return false;
         }
 
+        return true;
     }
 
     public static List<Student> readStudentsFromFile(String filename) {
