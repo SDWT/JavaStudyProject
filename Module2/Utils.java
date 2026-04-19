@@ -4,12 +4,11 @@ import java.io.EOFException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public final class Utils {
@@ -71,12 +70,11 @@ public final class Utils {
         var path = Path.of(filename);
 
         try {
-            Files.writeString(path, "");
-
-            for (Student student : students) {
-                Files.writeString(path, student.toTSVString(), StandardOpenOption.APPEND);
-                Files.writeString(path, "\n", StandardOpenOption.APPEND);
-            }
+            Files.write(
+                    path,
+                    students.stream()
+                            .map(Student::toTSVString)
+                            .collect(Collectors.toUnmodifiableList()));
         } catch (IOException e) {
             System.err.println("IOException: Can't work with students.tsv file.");
             e.printStackTrace();
@@ -91,15 +89,16 @@ public final class Utils {
         var path = Path.of(filename);
 
         if (!Files.exists(path))
-            return null;
+            return List.of();
 
-        try (Stream<String> stream = Files.lines(Paths.get(filename))) {
+        try (Stream<String> stream = Files.lines(path)) {
 
             stream.forEach(str -> {
                 try {
                     students.add(Student.fromTSVString(str));
                 } catch (EOFException e) {
-                    System.err.println(String.format("String was pass. Exception message: %s\nString: %s", e.getMessage(), str));
+                    System.err.println(
+                            String.format("String was pass. Exception message: %s\nString: %s", e.getMessage(), str));
                     e.printStackTrace();
                 }
             });
