@@ -60,7 +60,7 @@ public final class Utils {
                 // System.err.println(personBooks);
             }
 
-            student.books.addAll(personBooks);
+            student.getBooks().addAll(personBooks);
             personBooks.clear();
         }
 

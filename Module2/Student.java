@@ -10,7 +10,7 @@ public class Student {
     private String name;
     private String surname;
 
-    List<Book> books;
+    private List<Book> books;
 
     public Student(int id, String name, String surname, List<Book> books) {
         this.id = id;
