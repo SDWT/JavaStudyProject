@@ -33,36 +33,31 @@ public final class Utils {
         );
     }
 
-    public static List<Student> generateStudents() {
-        int n = 5;
+    private static Student createStudent(int id, String name, String surname,
+                                         List<Book> books, Random random) {
 
-        List<Student> students = new ArrayList<>(n);
-        ArrayList<Book> books = new ArrayList<Book>(getBooks());
+        HashSet<Book> selected = new HashSet<>();
+        int targetSize = 5 + random.nextInt(3);
 
-        students.add(new Student(1, "Ivan", "Ivanov"));
-        students.add(new Student(2, "Petr", "Petrov"));
-        students.add(new Student(3, "Sidr", "Sidorov"));
-        students.add(new Student(4, "Kot", "Kotov"));
-        students.add(new Student(5, "Vin", "Diesel"));
-
-        Random random = new Random(30);
-
-        // Бац — и 10 случайных чисел от 1 до 100 в массиве
-        // int[] numbers = random.ints(n * 5, 0, books.size() - 1).toArray();
-
-        HashSet<Book> personBooks = new HashSet<Book>();
-        for (Student student : students) {
-
-            while (personBooks.size() < 5 + random.nextInt(3)) {
-                personBooks.add(books.get(random.nextInt(books.size())));
-                // System.err.println(personBooks);
-            }
-
-            student.getBooks().addAll(personBooks);
-            personBooks.clear();
+        while (selected.size() < targetSize) {
+            selected.add(books.get(random.nextInt(books.size())));
         }
 
-        return students;
+        return new Student(id, name, surname, new ArrayList<>(selected));
+    }
+
+    public static List<Student> generateStudents() {
+        List<Book> books = getBooks();
+        //Random random = new Random();
+        Random random = new Random(30);
+
+        return List.of(
+                createStudent(1, "Ivan", "Ivanov", books, random),
+                createStudent(2, "Petr", "Petrov", books, random),
+                createStudent(3, "Sidr", "Sidorov", books, random),
+                createStudent(4, "Kot", "Kotov", books, random),
+                createStudent(5, "Vin", "Diesel", books, random)
+        );
     }
 
     public static boolean writeStudentsToFile(String filename, List<Student> students) {
