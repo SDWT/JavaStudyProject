@@ -14,24 +14,23 @@ import java.util.stream.Stream;
 public final class Utils {
 
     public static List<Book> getBooks() {
-        List<Book> books = new ArrayList<Book>();
-
-        books.add(new Book(1, "Project Ave Maria", 2021, 576));
-        books.add(new Book(2, "Martianin", 2011, 480));
-        books.add(new Book(3, "The Da Vinci Code", 2003, 544));
-        books.add(new Book(4, "Starship Troopers", 1959, 352));
-        books.add(new Book(5, "Dune", 1965, 640));
-        books.add(new Book(6, "Foundation", 1951, 255));
-        books.add(new Book(7, "Hyperion", 1989, 482));
-        books.add(new Book(8, "The Hitchhiker’s Guide to the Galaxy", 1979, 224));
-        books.add(new Book(9, "Ender's Game", 1985, 324));
-        books.add(new Book(10, "Snow Crash", 1992, 480));
-        books.add(new Book(11, "Do Androids Dream of Electric Sheep?", 1968, 210));
-        books.add(new Book(12, "Ready Player One", 2011, 374));
-        books.add(new Book(13, "Neuromancer", 1984, 271));
-        books.add(new Book(14, "The Three-Body Problem", 2006, 302));
-        books.add(new Book(15, "Altered Carbon", 2002, 375));
-        return books;
+        return List.of(
+                new Book(1, "Project Ave Maria", 2021, 576),
+                new Book(2, "Martianin", 2011, 480),
+                new Book(3, "The Da Vinci Code", 2003, 544),
+                new Book(4, "Starship Troopers", 1959, 352),
+                new Book(5, "Dune", 1965, 640),
+                new Book(6, "Foundation", 1951, 255),
+                new Book(7, "Hyperion", 1989, 482),
+                new Book(8, "The Hitchhiker’s Guide to the Galaxy", 1979, 224),
+                new Book(9, "Ender's Game", 1985, 324),
+                new Book(10, "Snow Crash", 1992, 480),
+                new Book(11, "Do Androids Dream of Electric Sheep?", 1968, 210),
+                new Book(12, "Ready Player One", 2011, 374),
+                new Book(13, "Neuromancer", 1984, 271),
+                new Book(14, "The Three-Body Problem", 2006, 302),
+                new Book(15, "Altered Carbon", 2002, 375)
+        );
     }
 
     public static List<Student> generateStudents() {
