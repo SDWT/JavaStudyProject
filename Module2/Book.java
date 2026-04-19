@@ -14,20 +14,20 @@ public class Book {
         this.pagesCount = pagesCount;
     }
 
-    public int getYear() {
-        return year;
-    }
-
-    public int getPagesCount() {
-        return pagesCount;
-    }
-
     public int getId() {
         return id;
     }
 
     public String getName() {
         return name;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public int getPagesCount() {
+        return pagesCount;
     }
 
     @Override
