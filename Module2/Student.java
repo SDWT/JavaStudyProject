@@ -28,7 +28,7 @@ public class Student {
 
     @Override
     public String toString() {
-        StringBuffer strB = new StringBuffer();
+        StringBuilder strB = new StringBuilder();
 
         for (Book book : books) {
             strB.append(book);
@@ -44,7 +44,7 @@ public class Student {
     }
 
     public String toTSVString() {
-        StringBuffer strB = new StringBuffer();
+        StringBuilder strB = new StringBuilder();
 
         for (Book book : books) {
             strB.append(book.toTSVString());
