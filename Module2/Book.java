@@ -1,6 +1,8 @@
 package Module2;
 
-public class Book {
+import java.util.Objects;
+
+public final class Book {
 
     private final int id;
     private final String name;
@@ -56,8 +58,8 @@ public class Book {
                 && pagesCount == book.pagesCount;
     }
 
-    @Override
+@Override
     public int hashCode() {
-        return java.util.Objects.hash(id, name, year, pagesCount);
+        return Objects.hash(id, name, year, pagesCount);
     }
 }
