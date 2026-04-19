@@ -9,7 +9,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public final class Utils {
 
@@ -29,12 +28,11 @@ public final class Utils {
                 new Book(12, "Ready Player One", 2011, 374),
                 new Book(13, "Neuromancer", 1984, 271),
                 new Book(14, "The Three-Body Problem", 2006, 302),
-                new Book(15, "Altered Carbon", 2002, 375)
-        );
+                new Book(15, "Altered Carbon", 2002, 375));
     }
 
     private static Student createStudent(int id, String name, String surname,
-                                         List<Book> books, Random random) {
+            List<Book> books, Random random) {
 
         HashSet<Book> selected = new HashSet<>();
         int targetSize = 5 + random.nextInt(3);
@@ -48,7 +46,7 @@ public final class Utils {
 
     public static List<Student> generateStudents() {
         List<Book> books = getBooks();
-        //Random random = new Random();
+        // Random random = new Random();
         Random random = new Random(30);
 
         return List.of(
@@ -56,12 +54,11 @@ public final class Utils {
                 createStudent(2, "Petr", "Petrov", books, random),
                 createStudent(3, "Sidr", "Sidorov", books, random),
                 createStudent(4, "Kot", "Kotov", books, random),
-                createStudent(5, "Vin", "Diesel", books, random)
-        );
+                createStudent(5, "Vin", "Diesel", books, random));
     }
 
     public static boolean writeStudentsToFile(String filename, List<Student> students) {
-        var path = Path.of(filename);
+        Path path = Path.of(filename);
 
         try {
             Files.write(
@@ -79,30 +76,23 @@ public final class Utils {
     }
 
     public static List<Student> readStudentsFromFile(String filename) {
-        List<Student> students = new ArrayList<>(10);
-        var path = Path.of(filename);
+        Path path = Path.of(filename);
 
         if (!Files.exists(path))
             return List.of();
 
-        try (Stream<String> stream = Files.lines(path)) {
-
-            stream.forEach(str -> {
-                try {
-                    students.add(Student.fromTSVString(str));
-                } catch (EOFException e) {
-                    System.err.println(
-                            String.format("String was pass. Exception message: %s\nString: %s", e.getMessage(), str));
-                    e.printStackTrace();
-                }
-            });
-
+        try {
+            return Files.lines(path)
+                    .map(line -> {
+                        try {
+                            return Student.fromTSVString(line);
+                        } catch (EOFException e) {
+                            throw new RuntimeException("Invalid line: " + line, e);
+                        }
+                    })
+                    .collect(Collectors.toList());
         } catch (IOException e) {
-            System.err.println("Can't open Students file.");
-            e.printStackTrace();
+            throw new RuntimeException("Failed to read students file", e);
         }
-
-        return students;
     }
-
 }
