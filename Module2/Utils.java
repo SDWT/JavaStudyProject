@@ -57,7 +57,7 @@ public final class Utils {
                 createStudent(5, "Vin", "Diesel", books, random));
     }
 
-    public static boolean writeStudentsToFile(String filename, List<Student> students) {
+    public static void writeStudentsToFile(String filename, List<Student> students) {
         Path path = Path.of(filename);
 
         try {
@@ -67,12 +67,8 @@ public final class Utils {
                             .map(Student::toTSVString)
                             .collect(Collectors.toUnmodifiableList()));
         } catch (IOException e) {
-            System.err.println("IOException: Can't work with students.tsv file.");
-            e.printStackTrace();
-            return false;
+            throw new RuntimeException("Failed to write students file", e);
         }
-
-        return true;
     }
 
     public static List<Student> readStudentsFromFile(String filename) {
