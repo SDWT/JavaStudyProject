@@ -24,3 +24,44 @@ public abstract class FilterHandler {
 
     protected abstract List<Anime> applyFilter(List<Anime> animes);
 }
+
+public class GenreFilter extends FilterHandler {
+
+    @Override
+    protected List<Anime> applyFilter(List<Anime> animes) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'applyFilter'");
+    }
+    
+}
+
+public class StudioFilter extends FilterHandler {
+
+    @Override
+    protected List<Anime> applyFilter(List<Anime> animes) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'applyFilter'");
+    }
+    
+}
+
+public class YearFilter extends FilterHandler {
+
+    @Override
+    protected List<Anime> applyFilter(List<Anime> animes) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'applyFilter'");
+    }
+    
+}
+
+public class RatingFilter extends FilterHandler {
+
+    @Override
+    protected List<Anime> applyFilter(List<Anime> animes) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'applyFilter'");
+    }
+    
+}
+
