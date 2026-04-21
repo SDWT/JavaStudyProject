@@ -65,10 +65,14 @@ public final class Anime {
 
     @Override
     public String toString() {
-        return String.format("%s (%d) | %2.2f | %s | %5d episodes | studio: %s",
+        return String.format("%40s (%d) | %2.2f | %12s | %5d episodes | studio: %s",
                 title, year, rating, genre, episodes, studio);
     }
 
+    // Builder entry point
+    public static Builder builder() {
+        return new Builder();
+    }
 
     // Builder
     public static class Builder {
