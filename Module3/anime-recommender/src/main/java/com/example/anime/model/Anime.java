@@ -9,13 +9,13 @@ public final class Anime {
     private final int year;
     private final String studio;
     
-    public Anime(String title, String genre, double rating, int episodes, int year, String studio) {
-        this.title = title;
-        this.genre = genre;
-        this.rating = rating;
-        this.episodes = episodes;
-        this.year = year;
-        this.studio = studio;
+    public Anime(Builder builder) {
+        this.title = builder.title;
+        this.genre = builder.genre;
+        this.rating = builder.rating;
+        this.episodes = builder.episodes;
+        this.year = builder.year;
+        this.studio = builder.studio;
     }
 
     public String getTitle() {
@@ -42,4 +42,57 @@ public final class Anime {
         return studio;
     }
     
+    // Builder
+    public static class Builder {
+        private String title;
+        private String genre;
+        private double rating;
+        private int episodes;
+        private int year;
+        private String studio;
+
+        public Builder title(String title) {
+            this.title = title;
+            return this;
+        }
+
+        public Builder genre(String genre) {
+            this.genre = genre;
+            return this;
+        }
+
+        public Builder rating(double rating) {
+            this.rating = rating;
+            return this;
+        }
+
+        public Builder episodes(int episodes) {
+            this.episodes = episodes;
+            return this;
+        }
+
+        public Builder year(int year) {
+            this.year = year;
+            return this;
+        }
+
+        public Builder studio(String studio) {
+            this.studio = studio;
+            return this;
+        }
+
+        public Anime build() {
+            validate();
+            return new Anime(this);
+        }
+
+        private void validate() {
+            if (title == null || title.isBlank())
+                throw new IllegalStateException("Title must not be empty.");
+            if (rating < 0 || rating > 10)
+                throw new IllegalStateException("Rating must be between 0 and 10.");
+            if (episodes < 0)
+                throw new IllegalStateException("Episodes ust be >= 0.");
+        }        
+    }
 }
