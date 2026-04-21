@@ -11,7 +11,7 @@ public final class Anime {
     private final int year;
     private final String studio;
     
-    public Anime(Builder builder) {
+    private Anime(Builder builder) {
         this.title = builder.title;
         this.genre = builder.genre;
         this.rating = builder.rating;
