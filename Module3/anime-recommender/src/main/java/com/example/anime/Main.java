@@ -1,5 +1,6 @@
 package com.example.anime;
 
+import com.example.anime.chain.*;
 import com.example.anime.model.Anime;
 import com.example.anime.strategy.*;
 
@@ -22,18 +23,25 @@ public class Main {
 
         );
 
-        List<RecommendationStrategy> strategies = List.of(
-                new RatingStrategy(),
-                new GenreStrategy("action"),
-                new PopularityStrategy());
+        // List<RecommendationStrategy> strategies = List.of(
+        //         new RatingStrategy(),
+        //         new GenreStrategy("action"),
+        //         new PopularityStrategy());
 
-        for (RecommendationStrategy recommendation : strategies) {
-            List<Anime> result = recommendation.recommend(list);
+        // for (RecommendationStrategy recommendation : strategies) {
+        //     List<Anime> result = recommendation.recommend(list);
 
-            System.out.println(String.format("Strategy: %s", recommendation.getClass().getName()));
-            result.forEach(System.out::println);
-            System.out.println();
-        }
+        //     System.out.println(String.format("Strategy: %s", recommendation.getClass().getName()));
+        //     result.forEach(System.out::println);
+        //     System.out.println();
+        // }
+        
+        FilterHandler chain = new GenreFilter("Action");
+        chain.setNext(new MinYearFilter(2009))
+             .setNext(new MinRatingFilter(8.57));
 
+        List<Anime> result = chain.handle(list);
+
+        result.forEach(System.out::println);
     }
 }
