@@ -6,9 +6,9 @@ import com.example.anime.model.Anime;
 
 public class MinRatingFilter extends FilterHandler {
 
-    private final int minRating;
+    private final double minRating;
 
-    public MinRatingFilter(int minRating) {
+    public MinRatingFilter(double minRating) {
         this.minRating = minRating;
     }
 

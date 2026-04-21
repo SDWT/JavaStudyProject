@@ -6,9 +6,9 @@ import com.example.anime.model.Anime;
 
 public class MaxRatingFilter extends FilterHandler {
 
-    private final int maxRating;
+    private final double maxRating;
 
-    public MaxRatingFilter(int maxRating) {
+    public MaxRatingFilter(double maxRating) {
         this.maxRating = maxRating;
     }
 
