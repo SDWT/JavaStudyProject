@@ -63,6 +63,13 @@ public final class Anime {
         return Objects.hash(title, genre, rating, episodes, year, studio);
     }
 
+    @Override
+    public String toString() {
+        return String.format("%s (%d) | %2.2f | %s | %5d episodes | studio: %s",
+                title, year, rating, genre, episodes, studio);
+    }
+
+
     // Builder
     public static class Builder {
         private String title;
