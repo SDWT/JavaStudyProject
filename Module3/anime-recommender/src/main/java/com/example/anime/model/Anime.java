@@ -10,7 +10,7 @@ public final class Anime {
     private final int episodes;
     private final int year;
     private final String studio;
-    
+
     private Anime(Builder builder) {
         this.title = builder.title;
         this.genre = builder.genre;
@@ -49,7 +49,8 @@ public final class Anime {
     public boolean equals(Object o) {
         if (this == o)
             return true;
-        if (!(o instanceof Anime anime)) return false;
+        if (!(o instanceof Anime anime))
+            return false;
         return Double.compare(anime.rating, rating) == 0 &&
                 episodes == anime.episodes &&
                 year == anime.year &&
@@ -65,7 +66,7 @@ public final class Anime {
 
     @Override
     public String toString() {
-        return String.format("%40s (%d) | %2.2f | %12s | %5d episodes | studio: %s",
+        return String.format("%32s (%d) | %2.2f | %10s | %5d episodes | studio: %s",
                 title, year, rating, genre, episodes, studio);
     }
 
@@ -125,6 +126,6 @@ public final class Anime {
                 throw new IllegalStateException("Rating must be between 0 and 10.");
             if (episodes < 0)
                 throw new IllegalStateException("Episodes ust be >= 0.");
-        }        
+        }
     }
 }
