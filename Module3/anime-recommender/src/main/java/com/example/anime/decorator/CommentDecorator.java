@@ -11,6 +11,6 @@ public class CommentDecorator extends AnimeDecorator {
 
     @Override
     public String getDescription() {
-        return String.format("%s | Comment: ", super.getDescription(), comment);
+        return String.format("%s | Comment: %s", super.getDescription(), comment);
     }
 }
