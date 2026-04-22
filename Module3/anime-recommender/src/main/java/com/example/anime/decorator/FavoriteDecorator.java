@@ -8,6 +8,6 @@ public class FavoriteDecorator extends AnimeDecorator {
 
     @Override
     public String getDescription() {
-        return String.format("⭐️ %s", super.getDescription());
+        return String.format("+ %s", super.getDescription());
     }
 }
