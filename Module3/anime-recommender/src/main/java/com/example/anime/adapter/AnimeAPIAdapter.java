@@ -26,7 +26,8 @@ public class AnimeAPIAdapter implements AnimeService {
     private Anime convertToAnime(String raw) {
         String[] parts = raw.split("\\|");
 
-        System.out.println(parts[0]);
+        if (parts.length < 6)
+            throw new IllegalArgumentException("Invalid data: " + raw);
 
         return Anime.builder()
                 .title(parts[0])
