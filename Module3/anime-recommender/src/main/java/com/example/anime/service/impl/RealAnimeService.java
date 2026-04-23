@@ -21,7 +21,7 @@ public class RealAnimeService implements AnimeService {
                 Anime.builder().title("Fullmetal Alchemist: Brotherhood").genre("Action").rating(9.1)
                         .episodes(64).year(2009).studio("bones").build(),
                 Anime.builder().title("Steins;Gate").genre("Thriller").rating(9.07)
-                        .episodes(24).year(2011).studio("White Fox").build(),
+                        .episodes(24).year(2011).studio("WhiteFox").build(),
                 Anime.builder().title("Jujutsu Kaisen").genre("Action").rating(8.52)
                         .episodes(24).year(2020).studio("MAPPA").build());
     }
