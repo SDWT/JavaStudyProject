@@ -1,7 +1,6 @@
 package com.example.anime;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 import com.example.anime.chain.*;
@@ -14,7 +13,7 @@ import com.example.anime.service.impl.RecommendationServiceImpl;
 import com.example.anime.strategy.RecommendationStrategy;
 import com.example.anime.util.CommandParser;
 import com.example.anime.util.FilterChainFactory;
-import com.example.anime.util.FilterExpression;
+import com.example.anime.util.ParsedCommand;
 import com.example.anime.util.StrategyFactory;
 
 public class Main {
@@ -43,23 +42,22 @@ public class Main {
             }
 
             try {
-                // Теперь нужно научиться отличать фильтры и опции в параметрах...
-                // Ну, как обычно, починил неравенства, сломал всё остальное...
-                // Сожаления о том, что я решил усложнить всё это, KISS явно не соблюдаю...
-                Map<String, FilterExpression> params = CommandParser.parse(input);
+                // Сожаления о том, что решил усложнить всё это...
+                ParsedCommand cmd = CommandParser.parse(input);
 
-                // RecommendationStrategy strategy = StrategyFactory.getStrategy(
-                // params.get("strategy"), params.get("genre"));
-                RecommendationStrategy strategy = StrategyFactory.getStrategy(null, null);
+                RecommendationStrategy strategy = StrategyFactory.getStrategy(
+                        cmd.getOptions().get("strategy"),
+                        cmd.getOptions().get("genre"));
 
-                FilterHandler chain = FilterChainFactory.getFilterChain(params);
+                FilterHandler chain = FilterChainFactory.getFilterChain(cmd.getFilters());
 
-                // boolean favorite = Boolean.parseBoolean(
-                // params.getOrDefault("favorite", "false"));
-                boolean favorite = Boolean.parseBoolean("false");
+                boolean favorite = Boolean.parseBoolean(
+                        cmd.getOptions().getOrDefault("favorite", "false"));
+
+                String comment = cmd.getOptions().get("comment");
 
                 List<AnimeComponent> result = recommendationService
-                        .recommend(strategy, chain, favorite, input);
+                        .recommend(strategy, chain, favorite, comment);
 
                 if (result.isEmpty())
                     System.out.println("Sorry! No results found! ;( so sad");
@@ -73,29 +71,5 @@ public class Main {
         }
 
         scanner.close();
-
-        // FilterHandler chain = new GenreFilter("Action");
-        // chain.setNext(new MinYearFilter(2009))
-        // .setNext(new MinRatingFilter(8.52));
-
-        // recommendationService.recommend(strategy,
-        // chain, true, "Must watch!")
-
-        // List<RecommendationStrategy> strategies = List.of(
-        // new RatingStrategy(),
-        // new GenreStrategy("action"),
-        // new PopularityStrategy());
-
-        // for (RecommendationStrategy recommendation : strategies) {
-        // List<Anime> result = recommendation.recommend(list);
-
-        // System.out.println(String.format("Strategy: %s",
-        // recommendation.getClass().getName()));
-        // result.forEach(System.out::println);
-        // System.out.println();
-        // }
-
-        // result.forEach(System.out::println);
-
     }
 }
