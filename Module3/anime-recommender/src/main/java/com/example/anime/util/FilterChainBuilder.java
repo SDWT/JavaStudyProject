@@ -16,6 +16,7 @@ public class FilterChainBuilder {
             head = current;
         }
 
+        // command: year> - need to fix -> change behaviour add parsing: =, >=, <=, >, <
         if (params.containsKey("year")) {
             int year = Integer.parseInt(params.get("year").replace(">=", ""));
             FilterHandler next = new MinYearFilter(year);
@@ -28,6 +29,7 @@ public class FilterChainBuilder {
             }
         }
 
+        // command: year>
         if (params.containsKey("rating")) {
             double rating = Double.parseDouble(params.get("rating").replace(">=", ""));
             FilterHandler next = new MinRatingFilter(rating);
