@@ -10,7 +10,7 @@ public class DeadlockExample {
             synchronized (LOCK_1) {
                 System.out.println("Thread 1: Блокировка LOCK_1");
 
-                sleep(100);
+                M4Utils.sleep(100);
 
                 System.out.println("Thread 1: ожидание LOCK_2");
                 synchronized (LOCK_2) {
@@ -23,7 +23,7 @@ public class DeadlockExample {
             synchronized (LOCK_2) {
                 System.out.println("Thread 2: Блокировка LOCK_2");
 
-                sleep(100);
+                M4Utils.sleep(100);
 
                 System.out.println("Thread 2: ожидание LOCK_1");
                 synchronized (LOCK_1) {
@@ -34,12 +34,5 @@ public class DeadlockExample {
 
         t1.start();
         t2.start();
-    }
-
-    private static void sleep(long ms) {
-        try {
-            Thread.sleep(ms);
-        } catch (InterruptedException ignored) {
-        }
     }
 }
