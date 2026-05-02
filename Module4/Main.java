@@ -16,6 +16,9 @@ public class Main {
                 case 1:
                     DeadlockExample.run();
                     break;
+                case 2:
+                    LivelockExample.run();
+                    break;
                 case 0:
                     System.out.println("Exit...");
                     scanner.close();
