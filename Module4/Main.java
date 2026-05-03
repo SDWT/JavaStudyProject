@@ -4,13 +4,13 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-        // Раскомментируй нужный сценарий
 
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
             printMenu();
             int choice = scanner.nextInt();
+            System.out.println();
 
             switch (choice) {
                 case 1:
@@ -18,6 +18,15 @@ public class Main {
                     break;
                 case 2:
                     LivelockExample.run();
+                    break;
+                case 3:
+                    System.out.print("Count of thread: ");
+                    int n = scanner.nextInt();
+                    if (n <= 0) {
+                        System.out.println("Count must be more than 0. Start standart count (2).");
+                        n = 2;
+                    }
+                    new OrderPrinter(n).start();
                     break;
                 case 0:
                     System.out.println("Exit...");
