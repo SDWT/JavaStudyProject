@@ -56,4 +56,19 @@ Utils - дополнительные методы по генерации тес
 
 Но в какой-то момент перемудрил и всё пошло по накатанной.
 
+###Использование:
+Запуск anime/Main.java/main()
+
+В CLI основная комманда recommend.
+
+recommend [year<op><year_int>] [rating<op><rating_double>] [genre=<genre_string>] [studio=<studio_string>] [strategy=<strategy_enum>] [comment=<omment_string>] [favorite=true]
+
+Примеры:
+recommend
+recommend year>2010 rating>=8.8 strategy=rating studio=MadHouse
+recommend year<2010 rating>=8.8 strategy=Genre studio=MadHouse
+recommend year<=2010 rating<7.8 strategy=popularity
+recommend rating>7.8 strategy=rating genre=Action favorite=true comment=cat
+
+
 ## Module 4:

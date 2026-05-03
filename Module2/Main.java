@@ -12,11 +12,11 @@ public class Main {
     public static void main(String[] args) {
 
         String filename = "students.tsv";
-        // List<Student> students = Utils.generateStudents();
-        // Utils.writeStudentsToFile(filename, students);
+        List<Student> students = Utils.generateStudents();
+        Utils.writeStudentsToFile(filename, students);
 
         // Чтение студентов и преобразование в список
-        List<Student> students = Utils.readStudentsFromFile(filename);
+        students = Utils.readStudentsFromFile(filename);
 
         students.stream()
                 .peek(System.out::println)                  // - Вывести в консоль каждого студента (переопределите toString)

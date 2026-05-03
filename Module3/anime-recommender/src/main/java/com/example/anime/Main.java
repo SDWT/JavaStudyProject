@@ -46,8 +46,7 @@ public class Main {
                 ParsedCommand cmd = CommandParser.parse(input);
 
                 RecommendationStrategy strategy = StrategyFactory.getStrategy(
-                        cmd.getOptions().get("strategy"),
-                        cmd.getOptions().get("genre"));
+                        cmd.getOptions().get("strategy"));
 
                 FilterHandler chain = FilterChainFactory.getFilterChain(cmd.getFilters());
 
